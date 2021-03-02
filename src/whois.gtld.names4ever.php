@@ -29,8 +29,6 @@ if ( !defined( '__NAMES4EVER_HANDLER__' ) ) {
 	define( '__NAMES4EVER_HANDLER__', 1 );
 }
 
-require_once( 'whois.parser.php' );
-
 class names4ever_handler {
 
 	public function parse( $data_str, $query ) {

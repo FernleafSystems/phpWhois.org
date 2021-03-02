@@ -29,8 +29,6 @@ if ( !defined( '__MARKMONITOR_HANDLER__' ) ) {
 	define( '__MARKMONITOR_HANDLER__', 1 );
 }
 
-require_once( 'whois.parser.php' );
-
 class markmonitor_handler {
 
 	public function parse( $data_str, $query ) {

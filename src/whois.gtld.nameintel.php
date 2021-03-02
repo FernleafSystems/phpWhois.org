@@ -29,8 +29,6 @@ if ( !defined( '__NAMEINTEL_HANDLER__' ) ) {
 	define( '__NAMEINTEL_HANDLER__', 1 );
 }
 
-require_once( 'whois.parser.php' );
-
 class nameintel_handler {
 
 	public function parse( $data_str, $query ) {

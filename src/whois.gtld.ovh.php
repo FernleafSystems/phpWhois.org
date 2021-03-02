@@ -29,8 +29,6 @@ if ( !defined( '__OVH_HANDLER__' ) ) {
 	define( '__OVH_HANDLER__', 1 );
 }
 
-require_once( 'whois.parser.php' );
-
 class ovh_handler {
 
 	public function parse( $data_str, $query ) {

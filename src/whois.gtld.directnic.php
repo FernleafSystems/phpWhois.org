@@ -29,8 +29,6 @@ if ( !defined( '__DIRECTNIC_HANDLER__' ) ) {
 	define( '__DIRECTNIC_HANDLER__', 1 );
 }
 
-require_once( 'whois.parser.php' );
-
 class directnic_handler {
 
 	public function parse( $data_str, $query ) {

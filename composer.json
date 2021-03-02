@@ -19,6 +19,9 @@
     },
     "classmap": [
       "./src"
+    ],
+    "files":    [
+      "./src/whois.parser.php"
     ]
   },
   "minimum-stability": "dev",

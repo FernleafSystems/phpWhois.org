@@ -29,8 +29,6 @@ if ( !defined( '__NL_HANDLER__' ) ) {
 	define( '__NL_HANDLER__', 1 );
 }
 
-require_once( 'whois.parser.php' );
-
 class nl_handler {
 
 	public function parse( $data, $query ) {

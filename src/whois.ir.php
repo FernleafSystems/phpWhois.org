@@ -23,12 +23,6 @@ if ( !defined( '__IR_HANDLER__' ) ) {
 	define( '__IR_HANDLER__', 1 );
 }
 
-// Loadup the parser.
-require_once( 'whois.parser.php' );
-
-/**
- * IR Domain names lookup handler class.
- */
 class ir_handler {
 
 	public function parse( $data_str, $query ) {

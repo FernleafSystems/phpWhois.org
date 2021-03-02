@@ -29,8 +29,6 @@ if ( !defined( '__TMAGNIC_HANDLER__' ) ) {
 	define( '__TMAGNIC_HANDLER__', 1 );
 }
 
-require_once( 'whois.parser.php' );
-
 class tmagnic_handler {
 
 	public function parse( $data_str, $query ) {

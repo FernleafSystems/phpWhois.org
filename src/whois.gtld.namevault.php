@@ -29,8 +29,6 @@ if ( !defined( '__NAMEVAULT_HANDLER__' ) ) {
 	define( '__NAMEVAULT_HANDLER__', 1 );
 }
 
-require_once( 'whois.parser.php' );
-
 class namevault_handler {
 
 	public function parse( $data_str, $query ) {

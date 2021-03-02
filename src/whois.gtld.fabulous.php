@@ -29,8 +29,6 @@ if ( !defined( '__FABULOUS_HANDLER__' ) ) {
 	define( '__FABULOUS_HANDLER__', 1 );
 }
 
-require_once( 'whois.parser.php' );
-
 class fabulous_handler {
 
 	public function parse( $data_str, $query ) {
