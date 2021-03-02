@@ -30,7 +30,7 @@ class utils extends Whois {
 	// showObject() and debugObject()
 	// - debug code to show an object or array
 
-	public function showObject( &$obj ) {
+	public function showObject( $obj ) {
 		$r = $this->debugObject( $obj );
 		return "<pre>$r</pre>\n";
 	}
@@ -123,7 +123,7 @@ class utils extends Whois {
 
 		// Add bold field names
 
-		$out = preg_replace( "/(?m)^([-\s\.&;'\w\t\(\)\/]+:\s*)/", '<b>$1</b>', $out );
+		$out = preg_replace( "/(?m)^([-\s.&;'\w\t()\/]+:\s*)/", '<b>$1</b>', $out );
 
 		// Add italics for disclaimer
 

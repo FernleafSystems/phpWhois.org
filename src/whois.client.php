@@ -492,10 +492,7 @@ class WhoisClient {
 		$handler->deep_whois = $deep_whois;
 
 		// Process
-		$res = $handler->parse( $result, $this->Query[ 'query' ] );
-
-		// Return the result
-		return $res;
+		return $handler->parse( $result, $this->Query[ 'query' ] );
 	}
 
 	/*

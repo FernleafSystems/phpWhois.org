@@ -238,7 +238,7 @@ class idna_convert {
 			$email_pref = join( '.', $arr );
 			$return = $email_pref.'@'.$input;
 		}
-		elseif ( preg_match( '![:\./]!', $input ) ) { // Or a complete domain name (with or without paths / parameters)
+		elseif ( preg_match( '![:./]!', $input ) ) { // Or a complete domain name (with or without paths / parameters)
 			// No no in strict mode
 			if ( $this->_strict_mode ) {
 				$this->_error( 'Only simple domain name parts can be handled in strict mode' );
@@ -296,6 +296,8 @@ class idna_convert {
 	/**
 	 * The actual decoding algorithm
 	 * @access   private
+	 * @param $encoded
+	 * @return false|string
 	 */
 	public function _decode( $encoded ) {
 		// We do need to find the Punycode prefix
@@ -357,6 +359,8 @@ class idna_convert {
 	/**
 	 * Decode a certain digit
 	 * @access   private
+	 * @param $cp
+	 * @return int
 	 */
 	public function _decode_digit( $cp ) {
 		$cp = ord( $cp );
@@ -366,6 +370,10 @@ class idna_convert {
 	/**
 	 * Adapt the bias according to the current code point and position
 	 * @access   private
+	 * @param $delta
+	 * @param $npoints
+	 * @param $is_first
+	 * @return int
 	 */
 	public function _adapt( $delta, $npoints, $is_first ) {
 		$delta = intval( $is_first ? ( $delta/$this->_damp ) : ( $delta/2 ) );
@@ -380,6 +388,8 @@ class idna_convert {
 	 * Convert UCS-4 string into UTF-8 string
 	 * See _utf8_to_ucs4() for details
 	 * @access   private
+	 * @param $input
+	 * @return false|string
 	 */
 	public function _ucs4_to_utf8( $input ) {
 		$output = '';
@@ -422,6 +432,8 @@ class idna_convert {
 	 * Convert UCS-4 array into UCS-4 string
 	 *
 	 * @access   private
+	 * @param $input
+	 * @return string
 	 */
 	public function _ucs4_to_ucs4_string( $input ) {
 		$output = '';
@@ -449,6 +461,8 @@ class idna_convert {
 	 * Each x represents a bit that can be used to store character data.
 	 * The five and six byte sequences are part of Annex D of ISO/IEC 10646-1:2000
 	 * @access   private
+	 * @param $input
+	 * @return array|false
 	 */
 	public function _utf8_to_ucs4( $input ) {
 		$output = [];
@@ -620,6 +634,8 @@ class idna_convert {
 	 * Convert UCS-4 strin into UCS-4 garray
 	 *
 	 * @access   private
+	 * @param $input
+	 * @return array|false
 	 */
 	public function _ucs4_string_to_ucs4( $input ) {
 		$output = [];
@@ -647,6 +663,8 @@ class idna_convert {
 	/**
 	 * The actual encoding algorithm
 	 * @access   private
+	 * @param $decoded
+	 * @return false|string
 	 */
 	public function _encode( $decoded ) {
 		// We cannot encode a domain name containing the Punycode prefix
@@ -985,6 +1003,8 @@ class idna_convert {
 	/**
 	 * Encoding a certain digit
 	 * @access   private
+	 * @param $d
+	 * @return string
 	 */
 	public function _encode_digit( $d ) {
 		return chr( $d + 22 + 75*( $d < 26 ) );

@@ -661,10 +661,10 @@ function get_contact( $array, $extra_items = '', $has_org = false ) {
 				//break;
 			}
 
-			if ( preg_match( "/([+]*[-\(\)\. x0-9]){7,}/", $val, $matches ) ) {
+			if ( preg_match( "/([+]*[-(). x0-9]){7,}/", $val, $matches ) ) {
 				$phone = trim( str_replace( ' ', '', $matches[ 0 ] ) );
 
-				if ( strlen( $phone ) > 8 && !preg_match( '/[0-9]{5}\-[0-9]{3}/', $phone ) ) {
+				if ( strlen( $phone ) > 8 && !preg_match( '/[0-9]{5}-[0-9]{3}/', $phone ) ) {
 					if ( isset( $r[ 'phone' ] ) ) {
 						if ( isset( $r[ 'fax' ] ) ) {
 							continue;
