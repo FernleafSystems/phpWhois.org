@@ -34,7 +34,7 @@ class assorted_handler
 	{
 	function parse($data_str, $query)
 		{
-		$items = array(
+		$items = [
                 'owner'	=> 'Registrant:',
                 'admin' => 'Administrative Contact:',
                 'tech' => 'Technical Contact:',
@@ -43,9 +43,8 @@ class assorted_handler
                 'domain.created' => 'Record created on',
                 'domain.expires' => 'Record expires on',
                 'domain.changed' => 'Record last updated'
-		            );
+		];
 
 		return easy_parser($data_str, $items, 'ymd',false,false,true);
 		}
 	}
-?>

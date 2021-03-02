@@ -34,7 +34,7 @@ class namejuice_handler
 	{
 	function parse($data_str, $query)
 		{
-		$items = array(
+		$items = [
 					'owner' => 'Registrant Contact:',
 					'admin' => 'Administrative Contact:',
 					'tech' => 'Technical Contact:',
@@ -45,9 +45,8 @@ class namejuice_handler
 					'domain.changed' => 'Update date:',
 					'domain.status' => 'Status:',
 					'domain.sponsor' => 'Registration Service Provided By:'
-				);
+		];
 
 		return easy_parser($data_str, $items, 'dmy', false, true, true);
 		}
 	}
-?>

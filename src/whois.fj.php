@@ -25,43 +25,44 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-require_once('whois.parser.php');
+require_once( 'whois.parser.php' );
 
-if (!defined('__FJ_HANDLER__'))
-	define('__FJ_HANDLER__', 1);
+if ( !defined( '__FJ_HANDLER__' ) ) {
+	define( '__FJ_HANDLER__', 1 );
+}
 
-class fj_handler
-	{
-	function parse($data_str, $query)
-		{
-		$items = array(
-				'owner' => 'Registrant:',
-				'domain.status' => 'Status:',
-				'domain.expires' => 'Expires:',
-				'domain.nserver' => 'Domain servers:'
-		            );
+class fj_handler {
 
-		$r['regrinfo'] = get_blocks($data_str['rawdata'], $items);
+	function parse( $data_str, $query ) {
+		$items = [
+			'owner'          => 'Registrant:',
+			'domain.status'  => 'Status:',
+			'domain.expires' => 'Expires:',
+			'domain.nserver' => 'Domain servers:'
+		];
 
-		if (!empty($r['regrinfo']['domain']['status']))
-			{
-			$r['regrinfo'] = get_contacts($r['regrinfo']);
+		$r[ 'regrinfo' ] = get_blocks( $data_str[ 'rawdata' ], $items );
 
-			date_default_timezone_set("Pacific/Fiji");
+		if ( !empty( $r[ 'regrinfo' ][ 'domain' ][ 'status' ] ) ) {
+			$r[ 'regrinfo' ] = get_contacts( $r[ 'regrinfo' ] );
 
-			if (isset($r['regrinfo']['domain']['expires']))
-				$r['regrinfo']['domain']['expires'] = strftime("%Y-%m-%d",strtotime($r['regrinfo']['domain']['expires']));
+			date_default_timezone_set( "Pacific/Fiji" );
 
-			$r['regrinfo']['registered'] = 'yes';
+			if ( isset( $r[ 'regrinfo' ][ 'domain' ][ 'expires' ] ) ) {
+				$r[ 'regrinfo' ][ 'domain' ][ 'expires' ] = strftime( "%Y-%m-%d", strtotime( $r[ 'regrinfo' ][ 'domain' ][ 'expires' ] ) );
 			}
-		else
-			$r['regrinfo']['registered'] = 'no';
 
-		$r['regyinfo'] = array(
-                         'referrer' => 'http://www.domains.fj',
-                         'registrar' => 'FJ Domain Name Registry'
-                         );
-		return $r;
+			$r[ 'regrinfo' ][ 'registered' ] = 'yes';
 		}
+		else {
+			$r[ 'regrinfo' ][ 'registered' ] = 'no';
+		}
+
+		$r[ 'regyinfo' ] = [
+			'referrer'  => 'http://www.domains.fj',
+			'registrar' => 'FJ Domain Name Registry'
+		];
+		return $r;
 	}
-?>
+}
+

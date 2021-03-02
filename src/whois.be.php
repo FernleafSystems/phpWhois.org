@@ -25,53 +25,52 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-require_once('whois.parser.php');
+require_once( 'whois.parser.php' );
 
-if (!defined('__BE_HANDLER__'))
-	define('__BE_HANDLER__', 1);
+if ( !defined( '__BE_HANDLER__' ) ) {
+	define( '__BE_HANDLER__', 1 );
+}
 
-class be_handler
-	{
-	function parse($data, $query)
-		{
+class be_handler {
+
+	function parse( $data, $query ) {
 		$items = [
-					'domain.name'		=> 'Domain:',
-					'domain.status'	=> 'Status:',
-					'domain.nserver'	=> 'Nameservers:',
-					'domain.created'	=> 'Registered:',
-					'owner'				=> 'Registrant:',
-					'tech'				=> 'Registrar Technical Contacts:',
-					'registrar'			=> 'Registrar:',
-					//'agent.name'			=> 'Name:',
-					'agent.uri'			=> 'Website:'
-					];
+			'domain.name'    => 'Domain:',
+			'domain.status'  => 'Status:',
+			'domain.nserver' => 'Nameservers:',
+			'domain.created' => 'Registered:',
+			'owner'          => 'Registrant:',
+			'tech'           => 'Registrar Technical Contacts:',
+			'registrar'      => 'Registrar:',
+			//'agent.name'			=> 'Name:',
+			'agent.uri'      => 'Website:'
+		];
 
 		$trans = [
-					'company name2:' => ''
-					];
+			'company name2:' => ''
+		];
 
-		$r['regrinfo'] = get_blocks($data['rawdata'], $items);
+		$r[ 'regrinfo' ] = get_blocks( $data[ 'rawdata' ], $items );
 
-		if ($r['regrinfo']['domain']['status'] == 'NOT AVAILABLE')
-			{
-			$r['regrinfo']['registered'] = 'yes';
-			$r['regrinfo'] = get_contacts($r['regrinfo'], $trans);
+		if ( $r[ 'regrinfo' ][ 'domain' ][ 'status' ] == 'NOT AVAILABLE' ) {
+			$r[ 'regrinfo' ][ 'registered' ] = 'yes';
+			$r[ 'regrinfo' ] = get_contacts( $r[ 'regrinfo' ], $trans );
 
-			if (isset($r['regrinfo']['registrar']))
-				{
-				$sponsor = get_contact($r['regrinfo']['registrar'], $trans);
-				$r['regrinfo']['domain']['sponsor'] = array_merge($sponsor, $r['regrinfo']['agent']);
-				unset($r['regrinfo']['registrar']);
-				unset($r['regrinfo']['agent']);
-				}
-
-			$r = format_dates($r, '-mdy');
+			if ( isset( $r[ 'regrinfo' ][ 'registrar' ] ) ) {
+				$sponsor = get_contact( $r[ 'regrinfo' ][ 'registrar' ], $trans );
+				$r[ 'regrinfo' ][ 'domain' ][ 'sponsor' ] = array_merge( $sponsor, $r[ 'regrinfo' ][ 'agent' ] );
+				unset( $r[ 'regrinfo' ][ 'registrar' ] );
+				unset( $r[ 'regrinfo' ][ 'agent' ] );
 			}
-		else
-			$r['regrinfo']['registered'] = 'no';
 
-		$r['regyinfo']['referrer'] = 'http://www.domain-registry.nl';
-		$r['regyinfo']['registrar'] = 'DNS Belgium';
-		return $r;
+			$r = format_dates( $r, '-mdy' );
 		}
+		else {
+			$r[ 'regrinfo' ][ 'registered' ] = 'no';
+		}
+
+		$r[ 'regyinfo' ][ 'referrer' ] = 'http://www.domain-registry.nl';
+		$r[ 'regyinfo' ][ 'registrar' ] = 'DNS Belgium';
+		return $r;
 	}
+}

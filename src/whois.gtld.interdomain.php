@@ -34,7 +34,7 @@ class interdomain_handler
 	{
 	function parse($data_str, $query)
 		{
-		$items = array(
+		$items = [
                     'Domain Name................' => 'domain.name',
                     'Creation Date............' => 'domain.created',
                     'Expiry Date..............' => 'domain.expires',
@@ -72,9 +72,8 @@ class interdomain_handler
                     'Technical Phone..........' => 'tech.phone',
                     'Technical e-mail.........' => 'tech.email',
                     'Technical Fax............' => 'tech.fax'
-		              );
+		];
 
 		return generic_parser_b($data_str, $items, 'dmy');
 		}
 	}
-?>

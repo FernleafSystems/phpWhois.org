@@ -25,32 +25,32 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-if (!defined('__GANDI_HANDLER__'))
-	define('__GANDI_HANDLER__', 1);
+if ( !defined( '__GANDI_HANDLER__' ) ) {
+	define( '__GANDI_HANDLER__', 1 );
+}
 
-require_once('whois.parser.php');
+require_once( 'whois.parser.php' );
 
-class gandi_handler
-	{
-	function parse($data_str, $query)
-		{
-		$items = array(
-                  'owner' => 'owner-c',
-                  'admin' => 'admin-c',
-                  'tech' => 'tech-c',
-                  'billing' => 'bill-c'
-		              );
+class gandi_handler {
 
-		$trans = array(
-					'nic-hdl:'	=> 'handle',
-					'person:'	=> 'name',
-					'zipcode:'	=> 'address.pcode',
-					'city:'		=> 'address.city',
-					'lastupdated:' => 'changed',
-					'owner-name:' => ''
-					);
+	function parse( $data_str, $query ) {
+		$items = [
+			'owner'   => 'owner-c',
+			'admin'   => 'admin-c',
+			'tech'    => 'tech-c',
+			'billing' => 'bill-c'
+		];
 
-		return easy_parser($data_str, $items, 'dmy', $trans);
-		}
+		$trans = [
+			'nic-hdl:'     => 'handle',
+			'person:'      => 'name',
+			'zipcode:'     => 'address.pcode',
+			'city:'        => 'address.city',
+			'lastupdated:' => 'changed',
+			'owner-name:'  => ''
+		];
+
+		return easy_parser( $data_str, $items, 'dmy', $trans );
 	}
-?>
+}
+

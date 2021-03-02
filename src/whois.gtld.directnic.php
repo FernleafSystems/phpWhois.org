@@ -34,7 +34,7 @@ class directnic_handler
 	{
 	function parse($data_str, $query)
 		{
-		$items = array(
+		$items = [
               'owner' => 'Registrant:',
               'admin' => 'Administrative Contact',
               'tech' => 'Technical Contact',
@@ -45,9 +45,8 @@ class directnic_handler
               'domain.created' => 'Record created on ',
               'domain.expires' => 'Record expires on ',
               '' => 'By submitting a WHOIS query'
-		          );
+		];
 
 		return easy_parser($data_str, $items, 'mdy',false,false,true);
 		}
 	}
-?>

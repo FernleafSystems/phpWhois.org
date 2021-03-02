@@ -34,7 +34,7 @@ class namevault_handler
 	{
 	function parse($data_str, $query)
 		{
-		$items = array(
+		$items = [
                 'owner' => 'Registrant',
                 'admin' => 'Administrative Contact:',
                 'tech' => 'Technical Contact:',
@@ -44,9 +44,8 @@ class namevault_handler
 				'domain.created' => 'Creation Date:',
                 'domain.expires' =>	'Expiration Date:',
                 'domain.status' => 'Status:'
-		            );
+		];
 
 		return easy_parser($data_str, $items, 'dmy', false, true, true);
 		}
 	}
-?>

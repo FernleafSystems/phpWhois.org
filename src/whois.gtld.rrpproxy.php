@@ -34,7 +34,7 @@ class rrpproxy_handler
 	{
 	function parse($data_str, $query)
 		{
-		$items = array(
+		$items = [
                   'created-date:' => 'domain.created',
                   'updated-date:' => 'domain.changed',
                   'registration-expiration-date:' => 'domain.expires',
@@ -84,9 +84,8 @@ class rrpproxy_handler
                   'billing-phone:' => 'billing.phone',
                   'billing-fax:' => 'billing.fax',
                   'billing-email:' => 'billing.email'
-		              );
+		];
 
 		return generic_parser_b($data_str, $items);
 		}
 	}
-?>

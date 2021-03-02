@@ -34,7 +34,7 @@ class fastdomain_handler
 	{
 	function parse($data_str, $query)
 		{
-		$items = array(
+		$items = [
                   'owner' => 'Registrant Info:',
                   'admin' => 'Administrative Info:',
                   'tech' => 'Technical Info:',
@@ -46,7 +46,7 @@ class fastdomain_handler
                   'domain.expires' => 'Expires on..............:',
                   'domain.changed' => 'Last modified on........:',
                   'domain.status' => 'Status:'
-		              );
+		];
 
 		foreach ($data_str as $key => $val)
 			{

@@ -34,7 +34,7 @@ class register_handler
 	{
 	function parse($data_str, $query)
 		{
-		$items = array(
+		$items = [
                   'owner#0' => 'Registrant Info:',
                   'owner#1' => 'Organization:',
                   'owner#2' => 'Registrant:',
@@ -54,9 +54,8 @@ class register_handler
                   'domain.expires#1' => 'Expiration date:',
                   'domain.changed' => 'Record last updated on..:',
                   'domain.status' => 'Status:'
-		            );
+		];
 
 		return easy_parser($data_str, $items, 'ymd');
 		}
 	}
-?>

@@ -34,13 +34,13 @@ class fabulous_handler
 	{
 	function parse($data_str, $query)
 		{
-		$items = array(
+		$items = [
               'owner' => 'Domain '.$query.':',
               'admin' => 'Administrative contact:',
               'tech' => 'Technical contact:',
               'billing' => 'Billing contact:',
               '' => 'Record dates:'
-		          );
+		];
 
 		$r = easy_parser($data_str, $items, 'mdy',false,false,true);
 
@@ -51,4 +51,3 @@ class fabulous_handler
 		return $r;
 		}
 	}
-?>

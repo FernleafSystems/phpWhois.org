@@ -34,7 +34,7 @@ class wildwestdomains_handler
 	{
 	function parse($data_str, $query)
 		{
-		$items = array(
+		$items = [
                   'owner' => 'Registrant:',
                   'admin' => 'Administrative Contact:',
                   'tech' => 'Technical Contact:',
@@ -44,9 +44,8 @@ class wildwestdomains_handler
                   'domain.created' => 'Created on:',
                   'domain.expires' => 'Expires on:',
                   'domain.changed' => 'Last Updated on:'
-		              );
+		];
 
 		return easy_parser($data_str, $items, 'mdy');
 		}
 	}
-?>

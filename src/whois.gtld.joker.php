@@ -25,54 +25,52 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-if (!defined('__JOKER_HANDLER__'))
-	define('__JOKER_HANDLER__', 1);
+if ( !defined( '__JOKER_HANDLER__' ) ) {
+	define( '__JOKER_HANDLER__', 1 );
+}
 
-require_once('whois.parser.php');
+require_once( 'whois.parser.php' );
 
-class joker_handler
-	{
-	function parse($data_str, $query)
-		{
-		$translate = array(
-				'contact-hdl'	=> 'handle',
-				'modified'		=> 'changed',
-				'reseller' 		=> 'sponsor',
-				'address' 		=> 'address.street',
-				'postal-code' 	=> 'address.pcode',
-                'city' 			=> 'address.city',
-                'state' 		=> 'address.state',
-				'country' 		=> 'address.country',
-				'person'		=> 'name',
-				'domain'		=> 'name'
-				);
+class joker_handler {
 
-		$contacts = array(
-				'admin-c' 	=> 'admin',
-				'tech-c' 	=> 'tech',
-				'billing-c' => 'billing'
-				);
+	function parse( $data_str, $query ) {
+		$translate = [
+			'contact-hdl' => 'handle',
+			'modified'    => 'changed',
+			'reseller'    => 'sponsor',
+			'address'     => 'address.street',
+			'postal-code' => 'address.pcode',
+			'city'        => 'address.city',
+			'state'       => 'address.state',
+			'country'     => 'address.country',
+			'person'      => 'name',
+			'domain'      => 'name'
+		];
 
-		$items = array(
-                'owner' 		=> 'name',
-				'organization' 	=> 'organization',
-				'email'			=> 'email',
-				'phone' 		=> 'phone',
-                'address' 		=> 'address',
-		            );
+		$contacts = [
+			'admin-c'   => 'admin',
+			'tech-c'    => 'tech',
+			'billing-c' => 'billing'
+		];
 
-		$r = generic_parser_a($data_str, $translate, $contacts, 'domain', 'Ymd');
+		$items = [
+			'owner'        => 'name',
+			'organization' => 'organization',
+			'email'        => 'email',
+			'phone'        => 'phone',
+			'address'      => 'address',
+		];
 
-		foreach($items as $tag => $convert)
-			{
-			if (isset($r['domain'][$tag]))
-				{
-				$r['owner'][$convert] = $r['domain'][$tag];
-				unset($r['domain'][$tag]);
-				}
+		$r = generic_parser_a( $data_str, $translate, $contacts, 'domain', 'Ymd' );
+
+		foreach ( $items as $tag => $convert ) {
+			if ( isset( $r[ 'domain' ][ $tag ] ) ) {
+				$r[ 'owner' ][ $convert ] = $r[ 'domain' ][ $tag ];
+				unset( $r[ 'domain' ][ $tag ] );
 			}
+		}
 
 		return $r;
-		}
 	}
-?>
+}
+

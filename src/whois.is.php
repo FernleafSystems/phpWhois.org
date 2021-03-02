@@ -25,45 +25,44 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-if (!defined('__IS_HANDLER__'))
-	define('__IS_HANDLER__', 1);
+if ( !defined( '__IS_HANDLER__' ) ) {
+	define( '__IS_HANDLER__', 1 );
+}
 
-require_once('whois.parser.php');
+require_once( 'whois.parser.php' );
 
-class is_handler
-	{
-	function parse($data_str, $query)
-		{
-		$translate = array(
-                      'fax-no' => 'fax',
-                      'e-mail' => 'email',
-                      'nic-hdl' => 'handle',
-                      'person' => 'name'
-		                  );
+class is_handler {
 
-		$contacts = array(
-                      'owner-c' => 'owner',
-                      'admin-c' => 'admin',
-                      'tech-c' => 'tech',
-                      'billing-c' => 'billing',
-                      'zone-c' => 'zone'
-		                  );
+	function parse( $data_str, $query ) {
+		$translate = [
+			'fax-no'  => 'fax',
+			'e-mail'  => 'email',
+			'nic-hdl' => 'handle',
+			'person'  => 'name'
+		];
 
-		$reg = generic_parser_a($data_str['rawdata'], $translate, $contacts, 'domain', 'mdy');
+		$contacts = [
+			'owner-c'   => 'owner',
+			'admin-c'   => 'admin',
+			'tech-c'    => 'tech',
+			'billing-c' => 'billing',
+			'zone-c'    => 'zone'
+		];
 
-		if (isset($reg['domain']['descr']))
-			{
-			$reg['owner']['name'] = array_shift($reg['domain']['descr']);
-			$reg['owner']['address'] = $reg['domain']['descr'];
-			unset($reg['domain']['descr']);
-			}
+		$reg = generic_parser_a( $data_str[ 'rawdata' ], $translate, $contacts, 'domain', 'mdy' );
 
-		$r['regrinfo'] = $reg;
-		$r['regyinfo'] = array(
-                          'referrer' => 'http://www.isnic.is',
-                          'registrar' => 'ISNIC'
-                          );
-		return $r;
+		if ( isset( $reg[ 'domain' ][ 'descr' ] ) ) {
+			$reg[ 'owner' ][ 'name' ] = array_shift( $reg[ 'domain' ][ 'descr' ] );
+			$reg[ 'owner' ][ 'address' ] = $reg[ 'domain' ][ 'descr' ];
+			unset( $reg[ 'domain' ][ 'descr' ] );
 		}
+
+		$r[ 'regrinfo' ] = $reg;
+		$r[ 'regyinfo' ] = [
+			'referrer'  => 'http://www.isnic.is',
+			'registrar' => 'ISNIC'
+		];
+		return $r;
 	}
-?>
+}
+

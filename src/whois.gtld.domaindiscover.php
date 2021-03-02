@@ -34,7 +34,7 @@ class domaindiscover_handler
 	{
 	function parse($data_str, $query)
 		{
-		$items = array(
+		$items = [
                 'owner' => 'Registrant:',
                 'admin' => 'Administrative Contact',
                 'tech' => 'Technical Contact',
@@ -43,9 +43,8 @@ class domaindiscover_handler
                 'domain.changed' => 'Last updated on',
                 'domain.created' => 'Domain created on',
                 'domain.expires' => 'Domain expires on'
-		            );
+		];
 
 		return easy_parser($data_str, $items, 'dmy', false, false, true);
 		}
 	}
-?>

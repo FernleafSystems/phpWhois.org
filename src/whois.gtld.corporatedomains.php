@@ -34,7 +34,7 @@ class corporatedomains_handler
 	{
 	function parse($data_str, $query)
 		{
-		$items = array(
+		$items = [
                 'owner' => 'Registrant:',
                 'admin' => 'Administrative Contact',
                 'tech' => 'Technical Contact',
@@ -45,9 +45,8 @@ class corporatedomains_handler
                 'domain.expires' => 'Domain expires on',
                 'domain.sponsor' => 'Registrar Name....:',
                 'domain.nserver' => 'DNS Servers:'
-		            );
+		];
 
 		return easy_parser($data_str, $items, 'dmy', false, false, true);
 		}
 	}
-?>

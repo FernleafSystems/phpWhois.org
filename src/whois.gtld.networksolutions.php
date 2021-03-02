@@ -34,7 +34,7 @@ class networksolutions_handler
 	{
 	function parse($data_str, $query)
 		{
-		$items = array(
+		$items = [
                   'owner'			=> 'Registrant:',
                   'admin'			=> 'Administrative Contact',
                   'tech'			=> 'Technical Contact',
@@ -42,9 +42,8 @@ class networksolutions_handler
                   'domain.nserver.'	=> 'Domain servers in listed order:',
                   'domain.created'	=> 'Record created on',
                   'domain.expires'	=> 'Record expires on'
-		              );
+		];
 
 		return easy_parser($data_str, $items, 'dmy',false,true,true);
 		}
 	}
-?>

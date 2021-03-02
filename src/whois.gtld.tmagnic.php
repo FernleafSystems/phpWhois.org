@@ -34,7 +34,7 @@ class tmagnic_handler
 	{
 	function parse($data_str, $query)
 		{
-		$items = array(
+		$items = [
               'owner' => 'Owner Contact:',
               'admin' => 'Admin Contact',
               'tech' => 'Technical Contact',
@@ -44,9 +44,8 @@ class tmagnic_handler
               'domain.changed' => 'Record last updated on: ',
               '' => 'Zone Contact',
               '#' => 'Punycode Name:'
-		          );
+		];
 
 		return easy_parser($data_str, $items, 'ymd',false,false,true);
 		}
 	}
-?>

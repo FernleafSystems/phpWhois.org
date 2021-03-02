@@ -34,7 +34,7 @@ class nameintel_handler
 	{
 	function parse($data_str, $query)
 		{
-		$items = array(
+		$items = [
                   'owner' => 'Registrant Contact:',
                   'admin' => 'Administrative Contact:',
                   'tech' => 'Technical Contact',
@@ -43,7 +43,7 @@ class nameintel_handler
                   'domain.nserver' => 'Name Server:',
                   'domain.created' => 'Creation Date:',
                   'domain.expires' => 'Expiration Date:'
-		              );
+		];
 
 		$r = easy_parser($data_str, $items, 'dmy', false, false, true);
 
@@ -61,4 +61,4 @@ class nameintel_handler
 		return $r;
 		}
 	}
-?>
+

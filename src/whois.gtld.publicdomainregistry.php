@@ -34,7 +34,7 @@ class publicdomainregistry_handler
 	{
 	function parse($data_str, $query)
 		{
-		$items = array(
+		$items = [
               'owner' => 'Registrant:',
               'owner#' => '(Registrant):',
               'admin' => 'Administrative Contact',
@@ -49,9 +49,8 @@ class publicdomainregistry_handler
               'domain.expires' => 'Record expires on',
               'domain.expires#' => 'Expiration Date:',
               'domain.status'	=> 'Status:'
-		          );
+		];
 
 		return easy_parser($data_str, $items, 'mdy', false, true, true);
 		}
 	}
-?>

@@ -34,7 +34,7 @@ class dreamhost_handler
 	{
 	function parse($data_str, $query)
 		{
-		$items = array(
+		$items = [
                   'owner' => 'Registrant Contact:',
                   'admin' => 'Administrative Contact:',
                   'tech' => 'Technical Contact:',
@@ -43,7 +43,7 @@ class dreamhost_handler
                   'domain.nserver' => 'Domain servers in listed order:',
                   'domain.created' => 'Record created on',
                   'domain.expires' => 'Record expires on'
-		              );
+		];
 
 		$r = easy_parser($data_str, $items, 'dmy', false, false, true);
 		if (isset($r['domain']['sponsor']) && is_array($r['domain']['sponsor']))
@@ -51,4 +51,4 @@ class dreamhost_handler
 		return $r;
 		}
 	}
-?>
+

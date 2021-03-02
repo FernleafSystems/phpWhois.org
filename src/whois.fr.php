@@ -25,54 +25,53 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-if (!defined('__FR_HANDLER__'))
-	define('__FR_HANDLER__', 1);
+if ( !defined( '__FR_HANDLER__' ) ) {
+	define( '__FR_HANDLER__', 1 );
+}
 
-require_once('whois.parser.php');
+require_once( 'whois.parser.php' );
 
-class fr_handler
-	{
-	function parse($data_str, $query)
-		{
-		$translate = array(
-						'fax-no' => 'fax',
-						'e-mail' => 'email',
-						'nic-hdl' => 'handle',
-						'ns-list' => 'handle',
-						'person' => 'name',
-						'address' => 'address.',
-						'descr' => 'desc',
-						'anniversary'	=> '',
-						'domain'	=> '',
-						'last-update' => 'changed',
-						'registered' => 'created',
-						'country' => 'address.country',
-						'registrar' => 'sponsor',
-						'role'	=> 'organization'
-		                  );
+class fr_handler {
 
-		$contacts = array(
-						'admin-c' 	=> 'admin',
-						'tech-c' 	=> 'tech',
-						'zone-c' 	=> 'zone',
-						'holder-c'	=> 'owner',
-						'nsl-id'	=> 'nserver'
-		                  );
+	function parse( $data_str, $query ) {
+		$translate = [
+			'fax-no'      => 'fax',
+			'e-mail'      => 'email',
+			'nic-hdl'     => 'handle',
+			'ns-list'     => 'handle',
+			'person'      => 'name',
+			'address'     => 'address.',
+			'descr'       => 'desc',
+			'anniversary' => '',
+			'domain'      => '',
+			'last-update' => 'changed',
+			'registered'  => 'created',
+			'country'     => 'address.country',
+			'registrar'   => 'sponsor',
+			'role'        => 'organization'
+		];
 
-		$reg = generic_parser_a($data_str['rawdata'], $translate, $contacts, 'domain','dmY');
+		$contacts = [
+			'admin-c'  => 'admin',
+			'tech-c'   => 'tech',
+			'zone-c'   => 'zone',
+			'holder-c' => 'owner',
+			'nsl-id'   => 'nserver'
+		];
 
-		if (isset($reg['nserver']))
-			{
-			$reg['domain'] = array_merge($reg['domain'],$reg['nserver']);
-			unset($reg['nserver']);
-			}
+		$reg = generic_parser_a( $data_str[ 'rawdata' ], $translate, $contacts, 'domain', 'dmY' );
 
-		$r['regrinfo'] = $reg;
-		$r['regyinfo'] = array(
-                          'referrer' => 'http://www.nic.fr',
-                          'registrar' => 'AFNIC'
-                          );
-		return $r;
+		if ( isset( $reg[ 'nserver' ] ) ) {
+			$reg[ 'domain' ] = array_merge( $reg[ 'domain' ], $reg[ 'nserver' ] );
+			unset( $reg[ 'nserver' ] );
 		}
+
+		$r[ 'regrinfo' ] = $reg;
+		$r[ 'regyinfo' ] = [
+			'referrer'  => 'http://www.nic.fr',
+			'registrar' => 'AFNIC'
+		];
+		return $r;
 	}
-?>
+}
+

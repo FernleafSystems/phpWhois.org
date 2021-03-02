@@ -34,7 +34,7 @@ class nameking_handler
 	{
 	function parse($data_str, $query)
 		{
-		$items = array(
+		$items = [
                   'owner' => 'Registrant',
                   'admin' => 'Admin Contact',
                   'tech' => 'Tech Contact',
@@ -42,9 +42,9 @@ class nameking_handler
                   'domain.sponsor' => 'Registration Provided By:',
                   'domain.created' => 'Creation Date:',
                   'domain.expires' => 'Expiration Date:',
-		              );
+		];
 
-		$extra = array(
+		$extra = [
 					'tel--' => 'phone',
 					'tel:' => 'phone',
 					'tel --:' => 'phone',
@@ -62,9 +62,8 @@ class nameking_handler
 					',country:' => 'address.country',
 					'organization:' => 'organization',
 					'city, province, post code:' => 'address.city'
-					);
+		];
 
 		return easy_parser($data_str, $items, 'mdy', $extra, false, true);
 		}
 	}
-?>

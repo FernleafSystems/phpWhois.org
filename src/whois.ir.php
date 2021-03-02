@@ -19,42 +19,42 @@
  */
 
 // Define the handler flag.
-if (!defined('__IR_HANDLER__'))
-  define('__IR_HANDLER__', 1);
+if ( !defined( '__IR_HANDLER__' ) ) {
+	define( '__IR_HANDLER__', 1 );
+}
 
 // Loadup the parser.
-require_once('whois.parser.php');
+require_once( 'whois.parser.php' );
 
 /**
  * IR Domain names lookup handler class.
  */
-class ir_handler
-	{
-	function parse($data_str, $query)
-		{
-		$translate = array(
-			'nic-hdl'	=> 'handle',
-			'org'		=> 'organization',
-			'e-mail'	=> 'email',
-			'person'	=> 'name',
-			'fax-no'	=> 'fax',
-			'domain'	=> 'name'
-			);
+class ir_handler {
 
-		$contacts = array(
-                    'admin-c'	=> 'admin',
-                    'tech-c'	=> 'tech',
-                    'holder-c'	=> 'owner'
-		                );
+	function parse( $data_str, $query ) {
+		$translate = [
+			'nic-hdl' => 'handle',
+			'org'     => 'organization',
+			'e-mail'  => 'email',
+			'person'  => 'name',
+			'fax-no'  => 'fax',
+			'domain'  => 'name'
+		];
 
-		$reg = generic_parser_a($data_str['rawdata'], $translate, $contacts, 'domain', 'Ymd');
+		$contacts = [
+			'admin-c'  => 'admin',
+			'tech-c'   => 'tech',
+			'holder-c' => 'owner'
+		];
 
-		$r['regrinfo'] = $reg;
-		$r['regyinfo'] = array(
-                    'referrer'=>'http://whois.nic.ir/',
-					'registrar' => 'NIC-IR'
-                    );
+		$reg = generic_parser_a( $data_str[ 'rawdata' ], $translate, $contacts, 'domain', 'Ymd' );
+
+		$r[ 'regrinfo' ] = $reg;
+		$r[ 'regyinfo' ] = [
+			'referrer'  => 'http://whois.nic.ir/',
+			'registrar' => 'NIC-IR'
+		];
 		return $r;
-		}
 	}
-?>
+}
+

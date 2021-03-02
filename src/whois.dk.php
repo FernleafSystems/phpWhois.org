@@ -25,38 +25,38 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-if (!defined('__DK_HANDLER__'))
-    define('__DK_HANDLER__', 1);
+if ( !defined( '__DK_HANDLER__' ) ) {
+	define( '__DK_HANDLER__', 1 );
+}
 
-require_once('whois.parser.php');
+require_once( 'whois.parser.php' );
 
-class dk_handler
-    {
-    function parse($data_str, $query)
-        {
-        $items = array(
-            'domain.name' => 'Domain:',
-            'domain.nserver.' => 'Hostname:',
-            'domain.status' => 'Status:',
-            'domain.desc.' => 'Descr:',
-            'domain.registered' => 'Registered:',
-            'domain.expires' => 'Expires:',
-            'domain.registration_period' => 'Registration period:',
-            'domain.VID' => 'VID:',
-            'domain.DNSSEC' => 'DNSSEC:',
-            'owner' => 'Name:',
-            'admin' => '[Admin-C]',
-            'tech' => '[Tech-C]',
-            'zone' => '[Zone-C]'
-                    );
+class dk_handler {
 
-        $r['regrinfo'] = get_blocks($data_str['rawdata'], $items);
+	function parse( $data_str, $query ) {
+		$items = [
+			'domain.name'                => 'Domain:',
+			'domain.nserver.'            => 'Hostname:',
+			'domain.status'              => 'Status:',
+			'domain.desc.'               => 'Descr:',
+			'domain.registered'          => 'Registered:',
+			'domain.expires'             => 'Expires:',
+			'domain.registration_period' => 'Registration period:',
+			'domain.VID'                 => 'VID:',
+			'domain.DNSSEC'              => 'DNSSEC:',
+			'owner'                      => 'Name:',
+			'admin'                      => '[Admin-C]',
+			'tech'                       => '[Tech-C]',
+			'zone'                       => '[Zone-C]'
+		];
 
-        $r['regyinfo'] = array(
-                  'registrar' => 'DK Hostmaster A/S',
-                  'referrer' => 'https://www.dk-hostmaster.dk/'
-                  );
+		$r[ 'regrinfo' ] = get_blocks( $data_str[ 'rawdata' ], $items );
 
-        return $r;
-        }
-    }
+		$r[ 'regyinfo' ] = [
+			'registrar' => 'DK Hostmaster A/S',
+			'referrer'  => 'https://www.dk-hostmaster.dk/'
+		];
+
+		return $r;
+	}
+}

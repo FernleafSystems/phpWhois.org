@@ -25,48 +25,46 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-require_once('whois.parser.php');
+require_once( 'whois.parser.php' );
 
-if (!defined('__LY_HANDLER__'))
-	define('__LY_HANDLER__', 1);
+if ( !defined( '__LY_HANDLER__' ) ) {
+	define( '__LY_HANDLER__', 1 );
+}
 
-class ly_handler
-	{
-	function parse($data_str, $query)
-		{
-		$items = array(
-				'owner' => 'Registrant:',
-				'admin' => 'Administrative Contact:',
-				'tech' => 'Technical Contact:',
-				'domain.name' => 'Domain Name:',
-				'domain.status' => 'Domain Status:',
-				'domain.created' => 'Created:',
-				'domain.changed' => 'Updated:',
-				'domain.expires' => 'Expired:',
-				'domain.nserver' => 'Domain servers in listed order:'
-		            );
+class ly_handler {
 
-		$extra = array( 'zip/postal code:' => 'address.pcode' );
+	function parse( $data_str, $query ) {
+		$items = [
+			'owner'          => 'Registrant:',
+			'admin'          => 'Administrative Contact:',
+			'tech'           => 'Technical Contact:',
+			'domain.name'    => 'Domain Name:',
+			'domain.status'  => 'Domain Status:',
+			'domain.created' => 'Created:',
+			'domain.changed' => 'Updated:',
+			'domain.expires' => 'Expired:',
+			'domain.nserver' => 'Domain servers in listed order:'
+		];
 
-		$r['regrinfo'] = get_blocks($data_str['rawdata'], $items);
+		$extra = [ 'zip/postal code:' => 'address.pcode' ];
 
-		if (!empty($r['regrinfo']['domain']['name']))
-			{
-			$r['regrinfo'] = get_contacts($r['regrinfo'],$extra);
-			$r['regrinfo']['domain']['name'] = $r['regrinfo']['domain']['name'][0];
-			$r['regrinfo']['registered'] = 'yes';
-			}
-		else
-			{
-			$r = '';
-			$r['regrinfo']['registered'] = 'no';
-			}
+		$r[ 'regrinfo' ] = get_blocks( $data_str[ 'rawdata' ], $items );
 
-		$r['regyinfo'] = array(
-                          'referrer' => 'http://www.nic.ly',
-                          'registrar' => 'Libya ccTLD'
-                          );
-		return $r;
+		if ( !empty( $r[ 'regrinfo' ][ 'domain' ][ 'name' ] ) ) {
+			$r[ 'regrinfo' ] = get_contacts( $r[ 'regrinfo' ], $extra );
+			$r[ 'regrinfo' ][ 'domain' ][ 'name' ] = $r[ 'regrinfo' ][ 'domain' ][ 'name' ][ 0 ];
+			$r[ 'regrinfo' ][ 'registered' ] = 'yes';
 		}
+		else {
+			$r = '';
+			$r[ 'regrinfo' ][ 'registered' ] = 'no';
+		}
+
+		$r[ 'regyinfo' ] = [
+			'referrer'  => 'http://www.nic.ly',
+			'registrar' => 'Libya ccTLD'
+		];
+		return $r;
 	}
-?>
+}
+

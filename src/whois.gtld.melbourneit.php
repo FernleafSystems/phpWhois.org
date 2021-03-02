@@ -34,7 +34,7 @@ class melbourneit_handler
 	{
 	function parse($data_str, $query)
 		{
-		$items = array(
+		$items = [
                   'Domain Name..........' => 'domain.name',
                   'Registration Date....' => 'domain.created',
                   'Expiry Date..........' => 'domain.expires',
@@ -51,9 +51,8 @@ class melbourneit_handler
                   'Tech Phone...........' => 'tech.phone',
                   'Tech Fax.............' => 'tech.fax',
                   'Name Server..........' => 'domain.nserver.'
-		              );
+		];
 
 		return generic_parser_b($data_str, $items, 'ymd');
 		}
 	}
-?>

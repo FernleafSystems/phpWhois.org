@@ -36,7 +36,7 @@ class domainpeople_handler
 	function parse($data_str, $query)
 		{
 
-		$items = array(
+		$items = [
                   'owner' => 'Registrant Contact:',
                   'admin' => 'Administrative Contact:',
                   'tech' => 'Technical Contact:',
@@ -48,7 +48,7 @@ class domainpeople_handler
                   'domain.expires' => 'Expiration date:',
 //                  'domain.changed' => 'Record last updated on',
                   'domain.status' => 'Status:'
-		              );
+		];
 
 		$r = easy_parser($data_str, $items, 'dmy', false, false, true);
 		if (isset($r['domain']['sponsor']) && is_array($r['domain']['sponsor']))
@@ -56,4 +56,3 @@ class domainpeople_handler
 		return $r;
 		}
 	}
-?>

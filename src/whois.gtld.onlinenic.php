@@ -34,7 +34,7 @@ class onlinenic_handler
 	{
 	function parse($data_str, $query)
 		{
-		$items = array(
+		$items = [
                   'owner' => 'Registrant:',
                   'admin' => 'Administrator:',
                   'tech' => 'Technical Contactor:',
@@ -45,9 +45,9 @@ class onlinenic_handler
                   'domain.created' => 'Record created on ',
                   'domain.expires' => 'Record expired on ',
                   'domain.changed' => 'Record last updated at '
-		              );
+		];
 
-		$extra = array(
+		$extra = [
 					'tel--' => 'phone',
 					'tel:' => 'phone',
 					'tel --:' => 'phone',
@@ -63,7 +63,7 @@ class onlinenic_handler
 					'province:' => '',
 					',province:' => '',
 					',country:' => 'address.country'
-					);
+		];
 
 		$r = easy_parser($data_str, $items, 'mdy',$extra,false,true);
 
@@ -80,4 +80,3 @@ class onlinenic_handler
 		return $r;
 		}
 	}
-?>
