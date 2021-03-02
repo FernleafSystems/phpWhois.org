@@ -1,0 +1,26 @@
+{
+  "name":              "fernleafsystems/phpwhois",
+  "authors":           [
+    {
+      "name":     "Paul Goodchild",
+      "email":    "paul@paulgoodchild.me",
+      "homepage": "https://paulgoodchild.me"
+    }
+  ],
+  "repositories":      [
+  ],
+  "require":           {
+    "php": ">=7.4"
+  },
+  "require-dev":       {
+  },
+  "autoload":          {
+    "psr-4":    {
+    },
+    "classmap": [
+      "./src"
+    ]
+  },
+  "minimum-stability": "dev",
+  "prefer-stable":     true
+}
