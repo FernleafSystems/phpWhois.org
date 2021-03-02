@@ -25,41 +25,38 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-if (!defined('__IE_HANDLER__'))
-	define('__IE_HANDLER__', 1);
+if ( !defined( '__IE_HANDLER__' ) ) {
+	define( '__IE_HANDLER__', 1 );
+}
 
-require_once('whois.parser.php');
+class ie_handler {
 
-class ie_handler
-	{
-	function parse($data_str, $query)
-		{
+	public function parse( $data_str, $query ) {
 		$translate = [
-						'nic-hdl' => 'handle',
-						'person' => 'name',
-						'renewal' => 'expires',
-						'registration' => 'created',
-						'ren-status' => 'status'
-						];
+			'nic-hdl'      => 'handle',
+			'person'       => 'name',
+			'renewal'      => 'expires',
+			'registration' => 'created',
+			'ren-status'   => 'status'
+		];
 
 		$contacts = [
-					  'admin-c' => 'admin',
-					  'tech-c' => 'tech',
-						];
+			'admin-c' => 'admin',
+			'tech-c'  => 'tech',
+		];
 
-		$reg = generic_parser_a($data_str['rawdata'], $translate, $contacts, 'domain', 'Ymd');
+		$reg = generic_parser_a( $data_str[ 'rawdata' ], $translate, $contacts, 'domain', 'Ymd' );
 
-		if (isset($reg['domain']['descr']))
-			{
-			$reg['owner']['organization'] = $reg['domain']['descr'];
-			unset($reg['domain']['descr']);
-			}
-
-		$r['regrinfo'] = $reg;
-		$r['regyinfo'] = [
-                    'referrer' => 'http://www.domainregistry.ie',
-                    'registrar' => 'IE Domain Registry'
-                    ];
-		return $r;
+		if ( isset( $reg[ 'domain' ][ 'descr' ] ) ) {
+			$reg[ 'owner' ][ 'organization' ] = $reg[ 'domain' ][ 'descr' ];
+			unset( $reg[ 'domain' ][ 'descr' ] );
 		}
+
+		$r[ 'regrinfo' ] = $reg;
+		$r[ 'regyinfo' ] = [
+			'referrer'  => 'http://www.domainregistry.ie',
+			'registrar' => 'IE Domain Registry'
+		];
+		return $r;
 	}
+}

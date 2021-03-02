@@ -25,25 +25,23 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-if (!defined('__CO_HANDLER__'))
-	define('__CO_HANDLER__', 1);
+if ( !defined( '__CO_HANDLER__' ) ) {
+	define( '__CO_HANDLER__', 1 );
+}
 
-require_once('whois.parser.php');
+class co_handler {
 
-class co_handler
-	{
-	function parse($data_str, $query)
-		{
+	public function parse( $data_str, $query ) {
 		$items = [
-					  'Registrar:' => 'domain.sponsor',
-					  'Registry Expiry Date:' => 'domain.expires',
-					  'Updated Date:' => 'domain.changed',
-					  'Creation Date:' => 'domain.created',
-					  ];
+			'Registrar:'            => 'domain.sponsor',
+			'Registry Expiry Date:' => 'domain.expires',
+			'Updated Date:'         => 'domain.changed',
+			'Creation Date:'        => 'domain.created',
+		];
 
-		$r['regrinfo'] = generic_parser_b($data_str['rawdata'], $items, 'Y-m-d');
-		$r['regyinfo']['referrer'] = 'http://www.cointernet.com.co/';
-		$r['regyinfo']['registrar'] = '.CO Internet, S.A.S.';
+		$r[ 'regrinfo' ] = generic_parser_b( $data_str[ 'rawdata' ], $items, 'Y-m-d' );
+		$r[ 'regyinfo' ][ 'referrer' ] = 'http://www.cointernet.com.co/';
+		$r[ 'regyinfo' ][ 'registrar' ] = '.CO Internet, S.A.S.';
 		return $r;
-		}
 	}
+}

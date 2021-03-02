@@ -1,3 +1,7 @@
+### Forked from sparc/phpWhois.org
+
+Original Repo: https://github.com/sparc/phpWhois.org
+
 # phpWhois - base class to do whois queries with PHP
 
 This package contains a Whois (RFC954) library for PHP. It allows

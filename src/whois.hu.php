@@ -25,29 +25,29 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 */
 
-if(!defined('__HU_HANDLER__'))
-  define('__HU_HANDLER__',1);
+if ( !defined( '__HU_HANDLER__' ) ) {
+	define( '__HU_HANDLER__', 1 );
+}
 
-require_once('whois.parser.php');
+class hu_handler {
 
-class hu_handler
-	{
-	function parse ($data_str, $query)
-		{
-		$items = array(
-		    'domain:' => 'domain.name',
-		    'record created:' => 'domain.created'
-	        );
+	public function parse( $data_str, $query ) {
+		$items = [
+			'domain:'         => 'domain.name',
+			'record created:' => 'domain.created'
+		];
 
-		$r['regrinfo'] = generic_parser_b($data_str['rawdata'],$items,'ymd');
+		$r[ 'regrinfo' ] = generic_parser_b( $data_str[ 'rawdata' ], $items, 'ymd' );
 
-		if (isset($r['regrinfo']['domain']))
-		    $r['regrinfo']['registered'] = 'yes';
-		else
-		    $r['regrinfo']['registered'] = 'no';
-
-		$r['regyinfo'] = array('referrer'=>'http://www.nic.hu','registrar'=>'HUNIC');
-		return $r;
+		if ( isset( $r[ 'regrinfo' ][ 'domain' ] ) ) {
+			$r[ 'regrinfo' ][ 'registered' ] = 'yes';
 		}
+		else {
+			$r[ 'regrinfo' ][ 'registered' ] = 'no';
+		}
+
+		$r[ 'regyinfo' ] = [ 'referrer' => 'http://www.nic.hu', 'registrar' => 'HUNIC' ];
+		return $r;
 	}
-?>
+}
+
