@@ -1,5 +1,10 @@
+2021/02/03 - v1.0.0
+* forked, reformated, and refactored to remove old code and styles
+* add composer support (fernleafsystems/phpwhois)
+* set minimum PHP 7.4
+
 2018/04/27
-		- Source control moved to github
+* Source control moved to github
 
 2011/07/09
 		- html & cosmetic changes in examples
