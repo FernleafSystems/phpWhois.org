@@ -341,7 +341,7 @@ class WhoisClient {
 		$rawdata = [];
 		$null = 0;
 
-		foreach ( $ouput as $key => $val ) {
+		foreach ( $output as $key => $val ) {
 			$val = trim( $val );
 			if ( $val == '' ) {
 				if ( ++$null > 2 ) {
