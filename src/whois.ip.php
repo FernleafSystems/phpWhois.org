@@ -29,8 +29,6 @@ if ( !defined( '__IP_HANDLER__' ) ) {
 	define( '__IP_HANDLER__', 1 );
 }
 
-require_once( 'whois.ip.lib.php' );
-
 class ip_handler extends WhoisClient {
 
 	// Deep whois ?

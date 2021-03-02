@@ -25,9 +25,7 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 */
 
-require_once( 'whois.ip.lib.php' );
-
-class WhoisClient {
+class WhoisClient extends WhoisServers {
 
 	// Recursion allowed ?
 	public $gtld_recurse = false;
@@ -69,10 +67,6 @@ class WhoisClient {
 	 * Constructor function
 	 */
 	public function __construct() {
-		// Load DATA array
-		@require( 'whois.servers.php' );
-
-		// Set version
 		$this->VERSION = sprintf( "phpWhois v%s-%s", $this->CODE_VERSION, $this->DATA_VERSION );
 	}
 
@@ -481,7 +475,6 @@ class WhoisClient {
 
 		// Pass result to handler
 		$object = $handler_name.'_handler';
-
 		$handler = new $object( '' );
 
 		// If handler returned an error, append it to the query errors list

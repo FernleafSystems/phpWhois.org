@@ -25,9 +25,6 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
 
-require_once( 'whois.client.php' );
-require_once( 'whois.idna.php' );
-
 class Whois extends WhoisClient {
 
 	// Deep whois ?
@@ -45,12 +42,8 @@ class Whois extends WhoisClient {
 	// Network Solutions registry server
 	public $NSI_REGISTRY = 'whois.nsiregistry.net';
 
-	/*
-	 * Constructor function
-	 */
 	public function __construct() {
-		// Load DATA array
-		@require( 'whois.servers.php' );
+		parent::__construct();
 
 		if ( ( substr( php_uname(), 0, 7 ) == 'Windows' ) ) {
 			$this->windows = true;
@@ -58,9 +51,6 @@ class Whois extends WhoisClient {
 		else {
 			$this->windows = false;
 		}
-
-		// Set version
-		$this->VERSION = sprintf( "phpWhois v%s-%s", $this->CODE_VERSION, $this->DATA_VERSION );
 	}
 
 	/*

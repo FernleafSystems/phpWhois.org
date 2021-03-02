@@ -21,7 +21,8 @@
       "./src"
     ],
     "files":    [
-      "./src/whois.parser.php"
+      "./src/whois.parser.php",
+      "./src/whois.ip.lib.php"
     ]
   },
   "minimum-stability": "dev",
