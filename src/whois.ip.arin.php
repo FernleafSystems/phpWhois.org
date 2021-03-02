@@ -51,8 +51,6 @@ class arin_handler {
 			'Updated:'        => 'network.changed',
 			'ASHandle:'       => 'network.handle',
 			'ASName:'         => 'network.name',
-			'NetHandle:'      => 'network.handle',
-			'NetName:'        => 'network.name',
 			'TechHandle:'     => 'tech.handle',
 			'TechName:'       => 'tech.name',
 			'TechPhone:'      => 'tech.phone',
