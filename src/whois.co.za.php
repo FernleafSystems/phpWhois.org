@@ -33,7 +33,7 @@ require_once( 'whois.parser.php' );
 
 class co_Za_handler {
 
-	function parse( $data_str, $query ) {
+	public function parse( $data_str, $query ) {
 		$items = [
 			'0a. lastupdate             :' => 'domain.changed',
 			'1a. domain                 :' => 'domain.name',

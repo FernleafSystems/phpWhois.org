@@ -33,7 +33,7 @@ require_once( 'whois.parser.php' );
 
 class psiusa_handler {
 
-	function parse( $data_str, $query ) {
+	public function parse( $data_str, $query ) {
 		$items = [
 			'created:'           => 'domain.created',
 			'last-changed:'      => 'domain.changed',

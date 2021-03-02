@@ -33,7 +33,7 @@ require_once( 'whois.parser.php' );
 
 class fi_handler {
 
-	function parse( $data_str, $query ) {
+	public function parse( $data_str, $query ) {
 		$items = [
 			'domain.............:' => 'domain.name',
 			'created............:' => 'domain.created',

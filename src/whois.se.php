@@ -33,7 +33,7 @@ require_once( 'whois.parser.php' );
 
 class se_handler {
 
-	function parse( $data_str, $query ) {
+	public function parse( $data_str, $query ) {
 		$items = [
 			'domain'   => 'domain.name',
 			'state:'   => 'domain.status.',

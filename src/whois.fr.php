@@ -33,7 +33,7 @@ require_once( 'whois.parser.php' );
 
 class fr_handler {
 
-	function parse( $data_str, $query ) {
+	public function parse( $data_str, $query ) {
 		$translate = [
 			'fax-no'      => 'fax',
 			'e-mail'      => 'email',

@@ -33,9 +33,9 @@ require_once( 'whois.parser.php' );
 
 class gtld_handler extends WhoisClient {
 
-	var $HANDLER_VERSION = '1.1';
+	public $HANDLER_VERSION = '1.1';
 
-	var $REG_FIELDS = [
+	public $REG_FIELDS = [
 		'Domain Name:'            => 'regrinfo.domain.name',
 		'Registrar:'              => 'regyinfo.registrar',
 		'Registrar WHOIS Server:' => 'regyinfo.whois',
@@ -52,7 +52,7 @@ class gtld_handler extends WhoisClient {
 		'No match for '           => 'nodomain'
 	];
 
-	function parse( $data, $query ) {
+	public function parse( $data, $query ) {
 		$this->Query = [];
 		$this->SUBVERSION = sprintf( '%s-%s', get_class( $this ), $this->HANDLER_VERSION );
 		$this->result = generic_parser_b( $data[ 'rawdata' ], $this->REG_FIELDS, 'dmy' );

@@ -33,7 +33,7 @@ require_once( 'whois.parser.php' );
 
 class ie_handler {
 
-	function parse( $data_str, $query ) {
+	public function parse( $data_str, $query ) {
 		$translate = [
 			'nic-hdl'      => 'handle',
 			'person'       => 'name',

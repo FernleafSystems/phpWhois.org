@@ -30,12 +30,12 @@ class utils extends Whois {
 	// showObject() and debugObject()
 	// - debug code to show an object or array
 
-	function showObject( &$obj ) {
+	public function showObject( &$obj ) {
 		$r = $this->debugObject( $obj );
 		return "<pre>$r</pre>\n";
 	}
 
-	function debugObject( $obj, $indent = 0 ) {
+	public function debugObject( $obj, $indent = 0 ) {
 		if ( is_Array( $obj ) ) {
 			$return = '';
 			foreach ( $obj as $k => $v ) {
@@ -47,13 +47,13 @@ class utils extends Whois {
 		}
 	}
 
-	function ns_rr_defined( $query ) {
+	public function ns_rr_defined( $query ) {
 		return checkdnsrr( $query, 'NS' );
 	}
 
 	// get nice HTML output
 
-	function showHTML( $result, $link_myself = true, $params = 'query=$0&amp;output=nice' ) {
+	public function showHTML( $result, $link_myself = true, $params = 'query=$0&amp;output=nice' ) {
 
 		// adds links fort HTML output
 

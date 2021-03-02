@@ -33,7 +33,7 @@ require_once( 'whois.parser.php' );
 
 class coop_handler {
 
-	function parse( $data_str, $query ) {
+	public function parse( $data_str, $query ) {
 
 		$items = [
 			'owner'           => 'Contact Type:            registrant',

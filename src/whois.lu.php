@@ -33,7 +33,7 @@ require_once( 'whois.parser.php' );
 
 class lu_handler {
 
-	function parse( $data_str, $query ) {
+	public function parse( $data_str, $query ) {
 		$items = [
 			'domainname:'  => 'domain.name',
 			'domaintype:'  => 'domain.status',

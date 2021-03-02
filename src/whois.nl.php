@@ -33,7 +33,7 @@ require_once( 'whois.parser.php' );
 
 class nl_handler {
 
-	function parse( $data, $query ) {
+	public function parse( $data, $query ) {
 		$items = [
 			'domain.name'    => 'Domain name:',
 			'domain.status'  => 'Status:',
@@ -75,7 +75,7 @@ class nl_handler {
 		return $r;
 	}
 
-	function get_contact( $data ) {
+	public function get_contact( $data ) {
 		$r = get_contact( $data );
 
 		if ( isset( $r[ 'name' ] ) && preg_match( '/^[A-Z0-9]+-[A-Z0-9]+$/', $r[ 'name' ] ) ) {

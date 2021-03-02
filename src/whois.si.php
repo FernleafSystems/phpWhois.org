@@ -33,7 +33,7 @@ require_once( 'whois.parser.php' );
 
 class si_handler {
 
-	function parse( $data_str, $query ) {
+	public function parse( $data_str, $query ) {
 		$translate = [
 			'nic-hdl'    => 'handle',
 			'nameserver' => 'nserver'

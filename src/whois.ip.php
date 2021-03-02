@@ -34,11 +34,11 @@ require_once( 'whois.ip.lib.php' );
 class ip_handler extends WhoisClient {
 
 	// Deep whois ?
-	var $deep_whois = true;
+	public $deep_whois = true;
 
-	var $HANDLER_VERSION = '1.0';
+	public $HANDLER_VERSION = '1.0';
 
-	var $REGISTRARS = [
+	public $REGISTRARS = [
 		'European Regional Internet Registry/RIPE NCC'              => 'whois.ripe.net',
 		'RIPE Network Coordination Centre'                          => 'whois.ripe.net',
 		'Asia Pacific Network Information	Center'                => 'whois.apnic.net',
@@ -47,7 +47,7 @@ class ip_handler extends WhoisClient {
 		'African Network Information Center'                        => 'whois.afrinic.net'
 	];
 
-	var $HANDLERS = [
+	public $HANDLERS = [
 		'whois.krnic.net'   => 'krnic',
 		'whois.apnic.net'   => 'apnic',
 		'whois.ripe.net'    => 'ripe',
@@ -56,11 +56,11 @@ class ip_handler extends WhoisClient {
 		'whois.afrinic.net' => 'afrinic'
 	];
 
-	var $more_data = [];    // More queries to get more accurated data
+	public $more_data = [];    // More queries to get more accurated data
 
-	var $done = [];
+	public $done = [];
 
-	function parse( $data, $query ) {
+	public function parse( $data, $query ) {
 		$result[ 'regrinfo' ] = [];
 		$result[ 'regyinfo' ] = [];
 		$result[ 'regyinfo' ][ 'registrar' ] = 'American Registry for Internet Numbers (ARIN)';
@@ -184,7 +184,7 @@ class ip_handler extends WhoisClient {
 
 	//-----------------------------------------------------------------
 
-	function handle_rwhois( $server, $query ) {
+	public function handle_rwhois( $server, $query ) {
 		// Avoid querying the same server twice
 
 		$parts = parse_url( $server );
@@ -222,7 +222,7 @@ class ip_handler extends WhoisClient {
 
 	//-----------------------------------------------------------------
 
-	function parse_results( $result, $rwdata, $query, $reset ) {
+	public function parse_results( $result, $rwdata, $query, $reset ) {
 		$rwres = $this->Process( $rwdata );
 
 		if ( $result[ 'regyinfo' ][ 'type' ] == 'AS' && !empty( $rwres[ 'regrinfo' ][ 'network' ] ) ) {
@@ -272,7 +272,7 @@ class ip_handler extends WhoisClient {
 
 	//-----------------------------------------------------------------
 
-	function join_result( $result, $key, $newres ) {
+	public function join_result( $result, $key, $newres ) {
 		if ( isset( $result[ 'regrinfo' ][ $key ] ) && !array_key_exists( 0, $result[ 'regrinfo' ][ $key ] ) ) {
 			$r = $result[ 'regrinfo' ][ $key ];
 			$result[ 'regrinfo' ][ $key ] = [ $r ];

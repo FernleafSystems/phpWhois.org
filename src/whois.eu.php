@@ -33,7 +33,7 @@ if ( !defined( '__EU_HANDLER__' ) ) {
 
 class eu_handler {
 
-	function parse( $data, $query ) {
+	public function parse( $data, $query ) {
 
 		$items = [
 			'domain.name'      => 'Domain:',

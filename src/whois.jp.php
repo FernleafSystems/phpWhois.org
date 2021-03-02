@@ -33,7 +33,7 @@ require_once( 'whois.parser.php' );
 
 class jp_handler extends WhoisClient {
 
-	function parse( $data_str, $query ) {
+	public function parse( $data_str, $query ) {
 		$items = [
 			'[State]'                  => 'domain.status',
 			'[Status]'                 => 'domain.status',

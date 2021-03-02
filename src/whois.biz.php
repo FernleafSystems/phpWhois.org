@@ -33,7 +33,7 @@ require_once( 'whois.parser.php' );
 
 class biz_handler {
 
-	function parse( $data_str, $query ) {
+	public function parse( $data_str, $query ) {
 		$r[ 'regrinfo' ] = generic_parser_b( $data_str[ 'rawdata' ], false, '-md--y' );
 		$r[ 'regyinfo' ] = [
 			'referrer'  => 'http://www.neulevel.biz',

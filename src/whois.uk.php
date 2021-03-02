@@ -33,7 +33,7 @@ require_once( 'whois.parser.php' );
 
 class uk_handler {
 
-	function parse( $data_str, $query ) {
+	public function parse( $data_str, $query ) {
 		$items = [
 			'owner.organization' => 'Registrant:',
 			'owner.address'      => "Registrant's address:",

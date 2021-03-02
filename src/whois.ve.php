@@ -34,7 +34,7 @@ require_once( 'whois.parser.php' );
 
 class ve_handler {
 
-	function parse( $data_str, $query ) {
+	public function parse( $data_str, $query ) {
 		$items = [
 			'owner'          => 'Titular:',
 			'domain.name'    => 'Nombre de Dominio:',

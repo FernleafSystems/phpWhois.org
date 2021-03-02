@@ -33,7 +33,7 @@ require_once( 'whois.parser.php' );
 
 class iana_handler {
 
-	function parse( $data_str, $query ) {
+	public function parse( $data_str, $query ) {
 		$items = [
 			'admin'           => 'contact:      administrative',
 			'tech'            => 'contact:      technical',

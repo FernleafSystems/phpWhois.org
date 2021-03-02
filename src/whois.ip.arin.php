@@ -33,7 +33,7 @@ require_once( 'whois.parser.php' );
 
 class arin_handler {
 
-	function parse( $data_str, $query ) {
+	public function parse( $data_str, $query ) {
 		$items = [
 			'OrgName:'        => 'owner.organization',
 			'CustName:'       => 'owner.organization',

@@ -33,7 +33,7 @@ if ( !defined( '__ORG_ZA_HANDLER__' ) ) {
 
 class org_za_handler {
 
-	function parse( $data, $query ) {
+	public function parse( $data, $query ) {
 		$items = [
 			'domain.status'  => 'Status:',
 			'domain.nserver' => 'Domain name servers in listed order:',

@@ -33,7 +33,7 @@ require_once( 'whois.parser.php' );
 
 class rwhois_handler {
 
-	function parse( $data_str, $query ) {
+	public function parse( $data_str, $query ) {
 		$items = [
 			'network:Organization-Name:'    => 'owner.name',
 			'network:Organization;I:'       => 'owner.organization',

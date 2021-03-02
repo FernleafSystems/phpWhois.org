@@ -33,7 +33,7 @@ require_once( 'whois.parser.php' );
 
 class nu_handler {
 
-	function parse( $data_str, $query ) {
+	public function parse( $data_str, $query ) {
 		$items = [
 			'name'    => 'Domain Name (UTF-8):',
 			'created' => 'Record created on',

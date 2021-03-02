@@ -33,7 +33,7 @@ require_once( 'whois.parser.php' );
 
 class bh_handler {
 
-	function parse( $data_str, $query ) {
+	public function parse( $data_str, $query ) {
 		$items = [
 			'Sponsoring Registrar Name:'  => 'domain.sponsor.name',
 			'Sponsoring Registrar Email:' => 'domain.sponsor.email',

@@ -33,7 +33,7 @@ require_once( 'whois.parser.php' );
 
 class cl_handler {
 
-	function parse( $data_str, $query ) {
+	public function parse( $data_str, $query ) {
 		$items = [
 			'admin'          => '(Administrative Contact)',
 			'tech'           => 'Contacto Técnico (Technical Contact):',

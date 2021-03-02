@@ -33,7 +33,7 @@ require_once( 'whois.parser.php' );
 
 class sc_handler {
 
-	function parse( $data_str, $query ) {
+	public function parse( $data_str, $query ) {
 		$r[ 'regrinfo' ] = generic_parser_b( $data_str[ 'rawdata' ], false, 'dmy' );
 		$r[ 'regyinfo' ] = [
 			'referrer'  => 'http://www.nic.sc',

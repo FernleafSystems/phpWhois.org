@@ -33,7 +33,7 @@ require_once( 'whois.parser.php' );
 
 class museum_handler {
 
-	function parse( $data_str, $query ) {
+	public function parse( $data_str, $query ) {
 		$r[ 'regrinfo' ] = generic_parser_b( $data_str[ 'rawdata' ] );
 		$r[ 'regyinfo' ] = [
 			'referrer'  => 'http://musedoma.museum',

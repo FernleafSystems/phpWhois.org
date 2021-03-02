@@ -33,7 +33,7 @@ require_once( 'whois.parser.php' );
 
 class ae_handler {
 
-	function parse( $data_str, $query ) {
+	public function parse( $data_str, $query ) {
 		$items = [
 			'Domain Name:'             => 'domain.name',
 			'Registrar Name:'          => 'domain.sponsor',

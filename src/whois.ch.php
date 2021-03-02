@@ -33,7 +33,7 @@ if ( !defined( '__CH_HANDLER__' ) ) {
 
 class ch_handler {
 
-	function parse( $data_str, $query ) {
+	public function parse( $data_str, $query ) {
 
 		$items = [
 			'owner'          => 'Holder of domain name:',

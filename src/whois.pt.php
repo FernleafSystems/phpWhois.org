@@ -38,7 +38,7 @@ require_once( 'whois.parser.php' );
 
 class pt_handler {
 
-	function parse( $data, $query ) {
+	public function parse( $data, $query ) {
 		$items = [
 			'domain.name'     => ' / Domain Name:',
 			'domain.created'  => 'Data de registo / Creation Date (dd/mm/yyyy):',

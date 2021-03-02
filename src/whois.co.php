@@ -33,7 +33,7 @@ require_once( 'whois.parser.php' );
 
 class co_handler {
 
-	function parse( $data_str, $query ) {
+	public function parse( $data_str, $query ) {
 		$items = [
 			'Registrar:'            => 'domain.sponsor',
 			'Registry Expiry Date:' => 'domain.expires',

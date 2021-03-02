@@ -33,7 +33,7 @@ if ( !defined( '__LACNIC_HANDLER__' ) ) {
 
 class lacnic_handler {
 
-	function parse( $data_str, $query ) {
+	public function parse( $data_str, $query ) {
 		$translate = [
 			'fax-no'     => 'fax',
 			'e-mail'     => 'email',

@@ -33,7 +33,7 @@ require_once( 'whois.parser.php' );
 
 class dk_handler {
 
-	function parse( $data_str, $query ) {
+	public function parse( $data_str, $query ) {
 		$items = [
 			'domain.name'                => 'Domain:',
 			'domain.nserver.'            => 'Hostname:',
